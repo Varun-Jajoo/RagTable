@@ -71,7 +71,7 @@ export default function Keys() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="grid gap-2">
                     <label
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-left"
                       htmlFor="key"
                     >
                       Key
@@ -84,7 +84,7 @@ export default function Keys() {
                   </div>
                   <div className="grid gap-2">
                     <label
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-left"
                       htmlFor="description"
                     >
                       Description
@@ -99,7 +99,7 @@ export default function Keys() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="grid gap-2">
                     <label
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-left"
                       htmlFor="data-type"
                     >
                       Data Type

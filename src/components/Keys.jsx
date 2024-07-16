@@ -1,9 +1,28 @@
 import React, { useState } from 'react';
 import { MdDriveFolderUpload } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
+import axios from "axios"
 
 export default function Keys() {
   const [fields, setFields] = useState([{ key: '', description: '', dataType: '' }]);
+  const [docText,setDocText] = useState("Fruits are versatile and delicious.Orange are rich in Vitamin C. Grapes come in bunches and are great for snacking. Pineapples have a tropical taste that is refreshing. Watermelons are perfect for hot summer days. They are incredibly hydrating. Mangoes are often called the king of fruits. They are sweet and juicy. Peaches are soft with a slightly tart taste. Kiwis are small but packed with nutrients. Strawberries are bright red and fragrant. Blueberries are rich in antioxidants. Pomegranates are full of seeds that burst with flavor. Avocados, although not sweet, are creamy and nutritious. They are excellent in salads and spreads. Fruits also make great smoothies. They add natural sweetness without extra calories. Including a variety of fruits in your diet is beneficial. It ensures you get a range of nutrients. Fruits are an essential part of a balanced diet. They are not just tasty but also essential for good health.")
+
+  const nodeQuery = () => {
+    axios.post('http://localhost:8080/data', {
+      fields: fields,
+      docText: docText
+    })
+    .then(response => {
+      console.log('Data sent successfully:', response.data);
+      axios.post('http://127.0.0.1:5050/extract-data',{
+        input_text:response.data.documents,
+        fields:response.data.fields
+      })
+    })
+    .catch(error => {
+      console.error('Error sending data:', error);
+    });
+  };
 
   const handleAddField = () => {
     setFields([...fields, { key: '', description: '', dataType: '' }]);
@@ -138,7 +157,7 @@ export default function Keys() {
                           onChange={(e) => handleInputChange(index, e)}
                         >
                           <option value="">Select data type</option>
-                          <option value="string">String</option>
+                          <option value="str">String</option>
                           <option value="number">Number</option>
                           <option value="boolean">Boolean</option>
                           <option value="date">Date</option>
@@ -166,7 +185,7 @@ export default function Keys() {
           <button className="inline-flex gap-2 mr-10 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
             Upload <MdDriveFolderUpload size={17}/>
           </button>
-          <button className="inline-flex mt-9 gap-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+          <button onClick={nodeQuery} className="inline-flex mt-9 gap-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
             Next <GrFormNextLink size={17}/>
           </button>
         </div>

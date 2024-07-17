@@ -6,6 +6,17 @@ import { useState } from "react";
 import TableComponent from "./components/Table";
 import axios from "axios";
 function App() {
+  const [loading, setLoading] = useState(false);
+ const [visible, setVisible] = useState(false);
+  const toggleLoading = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 11000);
+    
+
+  };
   const [data, setData] = useState([
     {
       key: "Apoptosis Evaluation with Annexin V and Propidium Iodide",
@@ -18,6 +29,7 @@ function App() {
     },
   ]);
   const nodeQuery = (fields, docText) => {
+    toggleLoading();
     axios
       .post("http://localhost:8080/data", {
         fields: fields,
@@ -42,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <Keys nodeQuery={nodeQuery} />
+      <Keys loading={loading} nodeQuery={nodeQuery} />
       <TableComponent data={data} />
     </div>
   );

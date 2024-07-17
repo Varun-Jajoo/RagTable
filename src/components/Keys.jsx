@@ -4,9 +4,8 @@ import { MdDriveFolderUpload } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
 import axios from "axios"
 import { MultiStepLoader } from './Multiloader';
-export default function Keys({nodeQuery}) {
+export default function Keys({loading,nodeQuery}) {
   const [fields, setFields] = useState([{ key: '', description: '', dataType: '' }]);
-  const [loading, setLoading] = useState(false);
   const loadingStates = [
     {
       text: "Uploading Your File",
@@ -40,9 +39,7 @@ export default function Keys({nodeQuery}) {
     });
     setFields(newFields);
   };
-  const toggleLoading = () => {
-    setLoading(!loading);
-  };
+ 
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -188,13 +185,13 @@ export default function Keys({nodeQuery}) {
           </div>
         </div>
         <div className=''>
-          <button onClick={toggleLoading} className="inline-flex gap-2 mr-10 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+          <button  className="inline-flex gap-2 mr-10 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
             Upload <MdDriveFolderUpload size={17}/>
           </button>
           <button onClick={() => nodeQuery(fields,docText)} className="inline-flex mt-9 gap-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
             Next <GrFormNextLink size={17}/>
           </button>
-      <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={3500} loop={false}/>
+      <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={2000} loop={false}/>
         </div>
       </main>
     </div>

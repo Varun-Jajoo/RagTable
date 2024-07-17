@@ -48,6 +48,7 @@ const main = async (text, queryTexts) => {
     queryTexts,
     nResults: 2,
   });
+  console.log(results);
   return results;
 };
 

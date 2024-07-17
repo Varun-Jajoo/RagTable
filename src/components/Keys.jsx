@@ -5,7 +5,34 @@ import axios from "axios"
 
 export default function Keys() {
   const [fields, setFields] = useState([{ key: '', description: '', dataType: '' }]);
-  const [docText,setDocText] = useState("Fruits are versatile and delicious.Orange are rich in Vitamin C. Grapes come in bunches and are great for snacking. Pineapples have a tropical taste that is refreshing. Watermelons are perfect for hot summer days. They are incredibly hydrating. Mangoes are often called the king of fruits. They are sweet and juicy. Peaches are soft with a slightly tart taste. Kiwis are small but packed with nutrients. Strawberries are bright red and fragrant. Blueberries are rich in antioxidants. Pomegranates are full of seeds that burst with flavor. Avocados, although not sweet, are creamy and nutritious. They are excellent in salads and spreads. Fruits also make great smoothies. They add natural sweetness without extra calories. Including a variety of fruits in your diet is beneficial. It ensures you get a range of nutrients. Fruits are an essential part of a balanced diet. They are not just tasty but also essential for good health.")
+  const [docText,setDocText] = useState(`Materials and Methods
+Extraction and Purification of Green Fluorescent Protein as the FRET Donor
+
+In order to develop a FRET-based BP we followed Suzuki et al. (27-29) and expressed and purified a modified, or “mutant,” green fluorescent protein (GFP-μ) by insertion of a caspase-3 cleavable short peptide sequence (DEVD). Briefly, the procedure involves transforming plasmids into competent Escherichia coli (BL-21 DE3, Invitrogen by Life Technologies, Carlsbad, CA). E. coli were cultured (37°C), harvested, and lysed. The lysate was separated and purified (column with Ni2+ − NTA resin, Thermo Fisher Scientific Inc., Waltham, MA), as per standard procedures with histidine tagged fusion proteins. GFP-μ was recovered after purification and reconstituted in phosphate-buffered saline and checked for purity spectroscopically (i.e., ratio of absorbance at 488 and 280 nm > 1.5).
+
+Construction of the Bioprobe
+
+The acceptor molecule used was an organic fluorophore, Alexa Fluor® 546 dye (Thermo Fisher Scientific Inc.) with an excitation maximum that sufficiently overlaps with the emission spectrum of GFP-μ (27-29, 56, 57). This fluorophore also has a quantum yield that is high relative to other Cy3 derivatives with similar emission profiles. Alexa Fluor® 546 dye was conjugated to GFP-μ by reduction of the disulfide bonds of the protein with dithiothreitol (DTT); 100 μl of a 20 μM protein solution was reduced with 1 mM DTT at room temperature for 15 min. Excess DTT was removed using Zeba™ spin desalting columns (Thermo Fisher Scientific Inc.). Alexa Fluor® 546 dye dissolved in dimethyl sulfoxide (DMSO) (concentration estimated spectrophotometrically using extinction coefficient at 554 nm, e554 = 106,000 cm−1M−1) was mixed with GFP-μ with a GFP-μ/Alexa Fluor® 546 dye at a ratio of 1:10. The mixture was incubated for 4 h at 37°C. Excess Alexa Fluor® 546 dye was removed using Zeba™ spin desalting columns. The final FRET bioprobe is referred to as GFP-μ-A546 from here forward.
+
+Caspase-3 Cleavage Test
+
+The GFP-μ-A546 BP was tested in vitro for cleavage by combining with two units of caspase-3 (EMD Millipore, Bedford, MA). The solution (5 μM) was reconstituted in a buffer with 20 mM 2-[4-(2-sulfoethyl) piperazin-1-ium-1-yl]ethanesulfonate (PIPES), 100 mM NaCl, 0.1% 3-[dimethyl(3-([(3α,5β,7α,12α)-3,7,12-trihydroxy-24-oxocholan-24-yl]amino)propyl)ammonio]propane-1-sulfonate (CHAPS), 10 mM DTT, 10% sucrose, and 1 mM EDTA. This mixture was incubated at 30°C for 2-, 5- and 7-h to evaluate caspase-3 cleavage response time. Cleavage was evaluated by measuring total fluorescence emission spectra (with a Horiba FluoroMax®-4 spectrofluorimeter).
+
+Cell Culture
+
+HeLa cells (ATCC.org®) were cultured as this line is known to have a strong caspase-3 expression when apoptosis is induced with tumor necrosis factor-α (TNF-α) and cycloheximide (CHX). In preparation for the evaluation of FRET, cells were cultured in a humidified atmosphere at 37°C and 5% CO2. Cells were cultured in Dulbecco's modified Eagle's medium (DMEM) with 10% fetal bovine serum (FBS) in T-25 flasks and six well plates. In preparation to add the GFP-μ-A546 to the cells, 50 μl (~25 μM) of the BP was added to a lyophilized film of BioPORTER reagent (Genlantis, San Diego, CA) and incubated at room temperature for approximately 10 min to insure hydration of the dry-film and formation of BioPORTER protein complexes. DMEM without FBS was also added so the resulting solution could be combined with the monolayer HeLa cells. The solution was added to cells cultured to 80 to 90% confluency. The same procedure was followed for the control in which the donor-only mutant GFP molecule was introduced into HeLa cells. After a 3-h incubation, the cells were washed, detached (0.25% Trypsin, Life technologies, Grand Island, NY), centrifuged, and re-suspended in phosphate buffered saline to obtain volumes at a concentration of approximately 106 cells/ml to be used for cytometry experiments.
+
+Apoptosis Evaluation with Annexin V and Propidium Iodide (PI)
+
+The evaluation of apoptosis induction in cells was with a standard annexin-PI cytometry assay. Aliquots of HeLa cells were treated with apoptosis-triggering reagents, TNF-α and CHX. After different time points, HeLa cells were collected and labeled with an annexin V fluorophore and PI. This procedure involved taking resuspended cells and combining with a 1× binding buffer containing 5 μl fluorescein 5-isothiocyanate [FITC; 2-(3,6-dihydroxy-9H-xanthen-9-yl)-5-isothiocyanatobenzoic acid] following the manufacturer's protocol for annexin V detection (BD Biosciences, Franklin Lakes, NJ). Additionally, 2 μl of propidium iodide was added to the cell suspension and mixed gently for live/dead cell analysis. The cells were evaluated using a BD Accuri™ C6 flow cytometer (BD Biosciences) to collect fluorescence intensity of FITC-annexin V and PI as well as forward scatter and side scatter values.
+
+Cytometric Evaluation of the BP Before and During Apoptosis
+
+Experimentally, we measured cells with GFP-μ-A546 before apoptosis induction and after apoptosis induction at different time points as well as cells with only GFP-μ. Our evaluation involved measuring changes in the fluorescence intensity and fluorescence lifetime of the donor fluorophore.
+
+A BD Accuri™ flow cytometer was used to evaluate donor emission and acceptor emission in a qualitative manner with the goal of evaluating GFP-μ and GFP-μ-A546 internalization within the cells. We thus collected optical signals at the peak emission of the donor molecule as well as the acceptor molecule (530/15 and 585/20-nm, when excited at 488-nm). A preliminary estimation of sensitized acceptor emission was performed with these data by taking the “FRET ratio” using the mean fluorescence intensity (MFI) of cells measured at the acceptor channel, divided by the MFI of the donor channel. This type of FRET ratio is an observational metric only because full FRET assessment requires additional intensity-based FRET controls, as reported by Nagy et al. (34) and others (58).
+
+The time-resolved cytometry measurements were performed with a retrofitted BD FACSVantage™ SE (BD Biosciences) cell sorter (Fig. 1). A 488-nm, 50 mW solid-state diode laser (Coherent Inc. OBIS, Santa Clara, CA) was used and digitally modulated at a sinusoidal radio frequency of 6.25 MHz (Tektronix AFG-3102 arbitrary function generator, Beaverton, OR). Side scattered light (SSC) was collected through a 488/10 nm band pass filter into a photomultiplier tube (PMT) detector (model: R1477-04, Hamamatsu Photonics, Lake Forest, CA). Fluorescence emission of the donor was detected using a 496 nm long pass filter and similar PMT detector. Signals from the PMTs were amplified (60 dB, AC-100, Advanced Research Instruments Corp., Bandon, OR) and digitized at 50 mega samples per second. Full cytometric waveforms were collected as were standard .fcs files which include the average fluorescence lifetime per cell as a parameter. Calibration with a known fluorescence lifetime is required for TRFC, which was achieved using Flow-Check™ fluorospheres (Beckman Coulter, CA), which have lifetimes reported to be 7 ns (59). After calibration, all settings remained constant for proceeding experiments.`)
 
   const nodeQuery = () => {
     axios.post('http://localhost:8080/data', {
@@ -17,6 +44,9 @@ export default function Keys() {
       axios.post('http://127.0.0.1:5050/extract-data',{
         input_text:response.data.documents,
         fields:response.data.fields
+      })
+      .then(response => {
+        console.log('Data sent successfully:', response.data);
       })
     })
     .catch(error => {

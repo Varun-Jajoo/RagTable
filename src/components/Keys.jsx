@@ -2,9 +2,28 @@ import React, { useState } from 'react';
 import { MdDriveFolderUpload } from "react-icons/md";
 import { GrFormNextLink } from "react-icons/gr";
 import axios from "axios"
-
+import { MultiStepLoader } from './Multiloader';
 export default function Keys() {
   const [fields, setFields] = useState([{ key: '', description: '', dataType: '' }]);
+  const [loading, setLoading] = useState(false);
+  const loadingStates = [
+    {
+      text: "Uploading Your File",
+    },
+    {
+      text: "Searching Your File ",
+    },
+    {
+      text: "Passing to our LLM",
+    },
+    {
+      text: "Visualizing Your Data",
+    },
+    {
+      text: "Clearing Cache",
+    },
+   
+  ];
   const [docText,setDocText] = useState(`Materials and Methods
 Extraction and Purification of Green Fluorescent Protein as the FRET Donor
 
@@ -67,6 +86,9 @@ The time-resolved cytometry measurements were performed with a retrofitted BD FA
     });
     setFields(newFields);
   };
+  const toggleLoading = () => {
+    setLoading(!loading);
+  };
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -128,6 +150,7 @@ The time-resolved cytometry measurements were performed with a retrofitted BD FA
       </header>
       <main className="flex-1 py-8 sm:py-12 md:py-16">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+          <textarea className='rounded-lg border bg-card text-card-foreground shadow-sm w-[66.2vw]'/>
           <div className="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
             <div className="flex flex-col space-y-1.5 p-6">
               <h3 className="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Add New Field</h3>
@@ -137,7 +160,7 @@ The time-resolved cytometry measurements were performed with a retrofitted BD FA
               <form className="grid gap-4">
                 {fields.map((field, index) => (
                   <div key={index} className="grid gap-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-4 gap-4">
                       <div className="grid gap-2">
                         <label
                           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-left"
@@ -170,8 +193,6 @@ The time-resolved cytometry measurements were performed with a retrofitted BD FA
                           onChange={(e) => handleInputChange(index, e)}
                         />
                       </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
                       <div className="grid gap-2">
                         <label
                           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-left"
@@ -205,6 +226,7 @@ The time-resolved cytometry measurements were performed with a retrofitted BD FA
                         </div>
                       )}
                     </div>
+                    
                   </div>
                 ))}
               </form>
@@ -212,12 +234,13 @@ The time-resolved cytometry measurements were performed with a retrofitted BD FA
           </div>
         </div>
         <div className=''>
-          <button className="inline-flex gap-2 mr-10 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+          <button onClick={toggleLoading} className="inline-flex gap-2 mr-10 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
             Upload <MdDriveFolderUpload size={17}/>
           </button>
           <button onClick={nodeQuery} className="inline-flex mt-9 gap-2 bg-black text-white items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
             Next <GrFormNextLink size={17}/>
           </button>
+      <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={3500} loop={false}/>
         </div>
       </main>
     </div>

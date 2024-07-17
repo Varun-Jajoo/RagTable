@@ -3,38 +3,17 @@ import './App.css';
 import Keys from './components/Keys';
 import { MultiStepLoader } from './components/Multiloader';
 import { useState } from 'react';
+import TableComponent from './components/Table';
 function App() {
-  const [loading, setLoading] = useState(true);
-  const loadingStates = [
-    {
-      text: "Buying a condo",
-    },
-    {
-      text: "Travelling in a flight",
-    },
-    {
-      text: "Meeting Tyler Durden",
-    },
-    {
-      text: "He makes soap",
-    },
-    {
-      text: "We goto a bar",
-    },
-    {
-      text: "Start a fight",
-    },
-    {
-      text: "We like it",
-    },
-    {
-      text: "Welcome to F**** C***",
-    },
+
+  const data = [
+    { key: 'Apoptosis Evaluation with Annexin V and Propidium Iodide', value: 'Apoptosis induction in cells was evaluated using a flow cytometry-based assay with Annexin V and Propidium Iodide (PI) staining. Annexin V binds to phosphatidylserine residues translocated to the outer leaflet of the plasma membrane in early apoptotic cells, while PI stains the DNA of late apoptotic and necrotic cells. The results were analyzed by flow cytometry to distinguish between live, early apoptotic, and late apoptotic/necrotic cells.' },
+    { key: 'Another Key', value: 'Another value related to apoptosis evaluation.' }
   ];
   return (
     <div className="App">
       <Keys />
-      <MultiStepLoader loadingStates={loadingStates} loading={loading} duration={2000}/>
+      <TableComponent data={data} />
     </div>
   );
 }

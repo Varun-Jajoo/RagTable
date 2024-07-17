@@ -13,6 +13,7 @@ function App() {
 
     setTimeout(() => {
       setLoading(false);
+      setVisible(true)
     }, 11000);
     
 
@@ -54,8 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      <Keys loading={loading} nodeQuery={nodeQuery} />
-      <TableComponent data={data} />
+      { !visible ? <Keys loading={loading} nodeQuery={nodeQuery} /> : <TableComponent data={data} setVisible={setVisible} />}
     </div>
   );
 }

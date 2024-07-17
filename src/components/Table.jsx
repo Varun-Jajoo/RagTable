@@ -1,6 +1,6 @@
 import React from 'react';
 import "../App.css"
-const TableComponent = ({ data }) => {
+const TableComponent = ({ data,setVisible }) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-300">
@@ -21,6 +21,7 @@ const TableComponent = ({ data }) => {
           ))}
         </tbody>
       </table>
+      <button onClick={() => setVisible(false)}> Back </button>
     </div>
   );
 };

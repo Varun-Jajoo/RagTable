@@ -43,7 +43,19 @@ body {
   background-color: #f4f4f9;
 }
 
+
+.table-container {
+  width: 80%;
+  
+  margin: 5% auto;
+  border-radius: 16px;
+}
+
+textarea{
+  
+}
 table {
+  border-radius: 16px;
   width: 100%;
   border-collapse: collapse;
 }

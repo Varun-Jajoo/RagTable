@@ -46,7 +46,7 @@ const main = async (text, queryTexts) => {
 
   const results = await collection.query({
     queryTexts,
-    nResults: 2,
+    nResults: 5,
   });
   console.log(results);
   return results;

@@ -8,16 +8,7 @@ import axios from "axios";
 function App() {
   const [loading, setLoading] = useState(false);
  const [visible, setVisible] = useState(false);
-  const toggleLoading = () => {
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      setVisible(true)
-    }, 11000);
-    
-
-  };
+  
   const [data, setData] = useState([
     {
       key: "Apoptosis Evaluation with Annexin V and Propidium Iodide",
@@ -30,7 +21,7 @@ function App() {
     },
   ]);
   const nodeQuery = (fields, docText) => {
-    toggleLoading();
+    setLoading(true);
     axios
       .post("http://localhost:8080/data", {
         fields: fields,
@@ -46,6 +37,8 @@ function App() {
           .then((response) => {
             console.log("Data sent successfully:", response.data);
             setData(response.data);
+            setLoading(false);
+            setVisible(true)
           });
       })
       .catch((error) => {
@@ -106,7 +99,7 @@ function App() {
           </div>
         </div>
       </header>
-      { !visible ? <Keys loading={loading} nodeQuery={nodeQuery} /> : <div > <TableComponent data={data} setVisible={setVisible} /></div>}
+      { !visible && data ? <Keys loading={loading} nodeQuery={nodeQuery} /> : <div > <TableComponent data={data} setVisible={setVisible} /></div>}
     </div>
   );
 }
